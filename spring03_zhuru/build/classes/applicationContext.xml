@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+        default-autowire="byName">
+        
+    <context:property-placeholder location="classpath:db.properties,classpath:second.properties"/>    
+    <context:component-scan base-package="com.su.service.impl"></context:component-scan>    
+    <!-- 获取数据库连接 spring-jdbc.jar -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    	<property name="driverClassName" value="${jdbc.driver}"></property>
+    	<property name="url" value="${jdbc.url}"></property>
+    	<property name="username" value="${jdbc.username}"></property>
+    	<property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!-- 创建SqlSessionFactory对象 -->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    </bean>
+    <!-- 扫描器相当于mybatis.xml中mapppers下package标签 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    	<property name="basePackage" value="com.su.mapper"></property>
+    	<property name="sqlSessionFactoryBeanName" value="factory"></property>
+    </bean>
+    <bean id="flowerService" class="com.su.service.impl.FlowerServiceImpl">
+    </bean>
+</beans>

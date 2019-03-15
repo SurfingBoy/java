@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <bean id="peo" class="com.su.model.People">
+   		<!-- <constructor-arg index="0" value="1"></constructor-arg>
+   		<constructor-arg index="1" value="24"></constructor-arg>
+   		<constructor-arg index="2" value="张三"></constructor-arg> -->
+   		
+   		<constructor-arg name="id" value="2"></constructor-arg>
+   		<constructor-arg name="age" value="14"></constructor-arg>
+   		<constructor-arg name="name" value="李四"></constructor-arg>
+   </bean>
+   
+   <!-- 工厂实例 -->
+   <!-- <bean id="factory" class="com.su.model.PeopleFactory"></bean>
+   <bean id="peo1" factory-bean="factory" factory-method="newInstance"></bean> -->
+   
+   <!-- 静态工厂实例 -->
+   <bean id="peo2" class="com.su.model.PeopleFactory" factory-method="newInstance"></bean>
+</beans>

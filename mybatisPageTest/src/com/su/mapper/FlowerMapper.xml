@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="a.b">
+  	<select id="selByPage" resultType="flo" parameterType="map">
+  		select *from flower 
+  		<where>
+  			<if test="name!=null and name!=''">
+  				<bind name="name" value="'%'+name+'%'"></bind>
+  				and name like #{name}
+  			</if>
+  			<if test="price!=null and price!='' and price>0">
+  				and price  &gt;= #{price} <!-- 小于&lt;   大于 &gt; -->
+  			</if>
+  		</where>
+  		limit #{startPage},#{pageSize}
+  	</select>
+  	<select id="selCount" resultType="int">
+  		select count(*) from flower
+  		<where>
+  			<if test="name!=null and name!=''">
+  				<bind name="name" value="'%'+name+'%'"></bind>
+  				and name like #{name}
+  			</if>
+  			<if test="price!=null and price!='' and price>0">
+  				and price &lt;= #{price} <!-- 小于 -->
+  			</if>
+  		</where>
+  	</select>
+  </mapper>

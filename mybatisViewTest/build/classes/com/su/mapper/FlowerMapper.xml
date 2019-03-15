@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.su.mapper.FlowerMapper">
+  	<insert id="ins" parameterType="flo">
+  		insert into flower values(default,#{name},#{price},#{desc})
+  	</insert>
+  	<!-- <select id="selAll" resultType="flo">
+  		select *from flower
+  	</select>
+  	<select id="selOne" resultType="flo" parameterType="int">
+  		select *from flower where id=#{0}
+  	</select>
+  	<select id="selByMap" resultType="flo" parameterType="map">
+  		select *from flower where id=#{id} and name=#{name}
+  	</select> -->
+  </mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+-->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<!-- 配置文件的名称固定，并且只能放于src下 -->
+<struts>
+<!-- package 分模块管理，name唯一，
+	 namespace命名空间，和url请求直接相关，如 / 请求为 /hello.action  /user 请求为/user/hello.action
+	 extends继承，必须直接或间接继承struts-default 比如，另一个package可以继承default,或struts-default
+ -->
+    <package name="default" namespace="/" extends="struts-default" >
+    <!-- action 配置url和处理类的方法进行映射 
+    	 name为请求名称，不加后缀
+    	 class 处理类的完全限定名称 ，如果不配置，由默认类来处理(ActionSupport)
+    	 method 指定处理请求的方法
+    -->
+        <action name="add" class="com.su.action.PointAction">
+        <!-- result 表示结果 
+        	 name 结果集 和处理方法的返回值匹配 默认为success
+        	 Struts2 提供了5个返回结果SUCCESS:执行成功跳转到下一个视图
+        	 					NONE：执行成功不需要视图显示
+        	 					ERROR：执行失败 显示失败的页面
+        	 					INPUT：要执行改操作需要更多的输入条件
+        	 					LOGIN：需要登录后才能执行
+        	 type 指定响应结果类型
+        	 	  dispatcher 转发(默认)
+        	 	  redirect 重定向
+        	 	  redirectAction 重定向action
+        	 (可以查看struts-default.xml中的定义)
+        	 result 的值为跳转页面，不加/为相对namespace路径
+        -->
+            <result >
+            	/welcome.jsp
+            </result>
+        </action>
+    </package>
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+
