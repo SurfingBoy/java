@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="users") //数据库表名
 public class Users {
 	@Id //主键
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //生成策略
 	@Column(name="id") //数据库表的字段名
 	private int id;
 	@Column(name="Name")
@@ -35,6 +35,10 @@ public class Users {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", name=" + name + ", age=" + age + "]";
 	}
 	
 	
