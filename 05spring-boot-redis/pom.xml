@@ -8,4 +8,24 @@
   <groupId>com.su</groupId>
   <artifactId>05spring-boot-redis</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	<java.version>1.8</java.version> 
+  </properties>
+  <dependencies>
+  	<!-- springBoot启动项 -->
+  	<dependency>
+	   <groupId>org.springframework.boot</groupId>
+	   <artifactId>spring-boot-starter-web</artifactId>
+	 </dependency>
+	 <!-- 测试工具启动项 -->
+     <dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-test</artifactId>
+	 </dependency>
+	 <!-- Spring Data Redis 的启动器 --> 
+	 <dependency> 
+	 	<groupId>org.springframework.boot</groupId> 
+	 	<artifactId>spring-boot-starter-data-redis</artifactId> 
+	 </dependency>
+  </dependencies>
 </project>
