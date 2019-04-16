@@ -1,5 +1,9 @@
 package com.su.test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +27,15 @@ public class RedisTest {
 //		this.redisTemplate.opsForValue().set("spring02", "配置文件中设置");
 //	}
 //	
-//	@Test
-//	public void testGet() {
-//		String valueString=(String) this.redisTemplate.opsForValue().get("spring02");
-//		System.out.println(valueString);
-//	}
+	@Test
+	public void testGet() {
+		String valueString=(String) this.redisTemplate.opsForValue().get("spring02");
+		List<String> list=new ArrayList<String>();
+		list.add("spring02");
+		list.add("name");
+		List<Object> xList=this.redisTemplate.opsForValue().multiGet(list);
+		System.out.println(xList);
+	}
 	
 //	@Test
 //	public void testSetUsers() {
@@ -60,10 +68,10 @@ public class RedisTest {
 //		this.redisTemplate.opsForValue().set("users_json", users);
 //	}
 	
-	@Test
-	public void testGetJson() {
-		this.redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Users.class));
-		Users users=(Users) this.redisTemplate.opsForValue().get("users_json");
-		System.out.println(users);
-	}
+//	@Test
+//	public void testGetJson() {
+//		this.redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Users.class));
+//		Users users=(Users) this.redisTemplate.opsForValue().get("users_json");
+//		System.out.println(users);
+//	}
 }
